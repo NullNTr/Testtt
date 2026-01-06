@@ -27,7 +27,6 @@ h1{
   background:linear-gradient(90deg,#fff,#fecaca,#ef4444,#7f1d1d);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-
   opacity:0;
   transform:translateY(-20px);
   animation:titleIn .9s ease forwards;
@@ -37,28 +36,13 @@ h1{
   to{ opacity:1; transform:translateY(0) }
 }
 
-/* ===== 白い区切り線 ===== */
+/* ===== 区切り線 ===== */
 .divider{
   width:70%;
   height:2px;
   margin:0 auto 28px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    #fff,
-    #fff,
-    transparent
-  );
-  box-shadow:
-    0 0 10px rgba(255,255,255,.8),
-    0 0 20px rgba(255,255,255,.5);
-  opacity:0;
-  animation:lineIn .8s ease forwards;
-  animation-delay:.4s;
-}
-
-@keyframes lineIn{
-  to{ opacity:1 }
+  background:linear-gradient(90deg,transparent,#fff,#fff,transparent);
+  box-shadow:0 0 15px rgba(255,255,255,.7);
 }
 
 .wrapper{
@@ -67,7 +51,7 @@ h1{
   padding:20px;
 }
 
-/* ===== 赤ネオンボタン ===== */
+/* ===== ツールボタン ===== */
 .tool-btn{
   width:100%;
   height:260px;
@@ -84,28 +68,16 @@ h1{
   padding:24px;
   text-align:left;
   color:#fee2e2;
-
-  opacity:0;
-  transform:translateY(40px);
-  animation:btnIn .8s ease forwards;
-}
-
-.tool-btn:nth-of-type(1){ animation-delay:.6s }
-.tool-btn:nth-of-type(2){ animation-delay:.8s }
-
-@keyframes btnIn{
-  to{ opacity:1; transform:translateY(0) }
+  transition:.3s;
 }
 
 .tool-btn:hover{
-  transform:translateY(-6px) scale(1.01);
+  transform:translateY(-6px);
   box-shadow:
-    0 0 40px rgba(255,60,60,.9),
-    0 0 80px rgba(255,60,60,.6),
-    inset 0 0 35px rgba(255,60,60,.35);
+    0 0 45px rgba(255,60,60,.9),
+    inset 0 0 30px rgba(255,60,60,.35);
 }
 
-/* ===== ボタン文字 ===== */
 .tool-btn h2{
   margin:0 0 14px 0;
   font-size:24px;
@@ -115,10 +87,30 @@ h1{
 }
 
 .tool-btn p{
-  margin:0;
+  margin:0 0 16px 0;
   font-size:14px;
   color:#fca5a5;
   line-height:1.8;
+}
+
+/* ===== Discord参加ボタン ===== */
+.join-btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:12px;
+  border:1px solid #ff6b6b;
+  background:linear-gradient(135deg,#dc2626,#ef4444,#7f1d1d);
+  color:#fff;
+  font-size:14px;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 0 20px rgba(255,60,60,.7);
+  transition:.25s;
+}
+
+.join-btn:hover{
+  box-shadow:0 0 35px rgba(255,60,60,1);
+  transform:scale(1.05);
 }
 
 /* ===== iframe ===== */
@@ -128,17 +120,11 @@ h1{
   border:none;
   margin-top:22px;
   border-top:1px solid #7f1d1d;
-
-  opacity:0;
-  transform:scale(.96);
-  transition:.5s ease;
   display:none;
 }
 
 .viewer.show{
   display:block;
-  opacity:1;
-  transform:scale(1);
 }
 </style>
 </head>
@@ -150,6 +136,7 @@ h1{
 
 <div class="wrapper">
 
+  <!-- Webhook Spammer -->
   <button class="tool-btn"
     onclick="openTool('https://nullntr.github.io/Webhook-Spammer-Tool/')">
     <h2>Webhook Spammer</h2>
@@ -159,14 +146,23 @@ h1{
     </p>
   </button>
 
-  <button class="tool-btn"
+  <!-- Token Checker -->
+  <div class="tool-btn"
     onclick="openTool('https://nullntr.github.io/Webhook-token-Checker/')">
     <h2>Webhook Token Checker</h2>
     <p>
       Webhook Token Checker問題なく動きます。<br>
       動くか動かないかのログが表示されます。
     </p>
-  </button>
+
+    <!-- ★ 追加：Discord参加ボタン -->
+    <a class="join-btn"
+       href="https://discord.gg/di-zheng-huang-rashigong-he-guo-1403496250715803790"
+       target="_blank"
+       onclick="event.stopPropagation()">
+       Discord Serverに参加
+    </a>
+  </div>
 
   <iframe id="viewer" class="viewer"></iframe>
 
