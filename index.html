@@ -27,22 +27,33 @@ h1{
   background:linear-gradient(90deg,#fff,#fecaca,#ef4444,#7f1d1d);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+
   opacity:0;
   transform:translateY(-20px);
-  animation:titleIn .8s ease forwards;
+  animation:titleIn 1s cubic-bezier(.25,.8,.25,1) forwards;
 }
 
 @keyframes titleIn{
-  to{ opacity:1; transform:translateY(0) }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* ===== 区切り線 ===== */
 .divider{
   width:70%;
   height:2px;
-  margin:0 auto 30px;
+  margin:0 auto 32px;
   background:linear-gradient(90deg,transparent,#fff,#fff,transparent);
-  box-shadow:0 0 15px rgba(255,255,255,.8);
+  box-shadow:0 0 18px rgba(255,255,255,.9);
+  opacity:0;
+  animation:fadeIn 1s ease forwards;
+  animation-delay:.4s;
+}
+
+@keyframes fadeIn{
+  to{ opacity:1 }
 }
 
 .wrapper{
@@ -51,11 +62,11 @@ h1{
   padding:20px;
 }
 
-/* ===== 共通カード ===== */
+/* ===== ボタン（カード） ===== */
 .card{
   width:100%;
   height:260px;
-  margin-bottom:26px;
+  margin-bottom:28px;
   border-radius:20px;
   border:1px solid #ff4d4d;
   background:
@@ -66,13 +77,31 @@ h1{
     inset 0 0 25px rgba(255,60,60,.3);
   padding:26px;
   cursor:pointer;
-  transition:.3s;
+
+  opacity:0;
+  transform:translateY(40px);
+  animation:cardIn .9s cubic-bezier(.25,.8,.25,1) forwards;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+/* 出現タイミング */
+.card:nth-of-type(1){ animation-delay:.6s }
+.card:nth-of-type(2){ animation-delay:.85s }
+
+@keyframes cardIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .card:hover{
   transform:translateY(-6px);
   box-shadow:
-    0 0 50px rgba(255,60,60,1),
+    0 0 55px rgba(255,60,60,1),
     inset 0 0 35px rgba(255,60,60,.4);
 }
 
@@ -91,47 +120,23 @@ h1{
   line-height:1.8;
 }
 
-/* ===== Discord専用大ボタン ===== */
-.discord-btn{
-  height:200px;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  background:
-    radial-gradient(circle at center, #5865F2, transparent 45%),
-    linear-gradient(145deg,#0f172a,#000);
-  border:1px solid #5865F2;
-  box-shadow:
-    0 0 35px rgba(88,101,242,.8),
-    inset 0 0 25px rgba(88,101,242,.4);
-}
-
-.discord-btn h2{
-  font-size:26px;
-  background:linear-gradient(90deg,#fff,#a5b4fc,#6366f1);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.discord-btn p{
-  color:#c7d2fe;
-  font-size:15px;
-}
-
 /* ===== iframe ===== */
 .viewer{
   width:100%;
   height:80vh;
   border:none;
-  margin-top:24px;
+  margin-top:26px;
   border-top:1px solid #7f1d1d;
   display:none;
+  opacity:0;
+  transform:scale(.97);
+  transition:.5s ease;
 }
 
 .viewer.show{
   display:block;
+  opacity:1;
+  transform:scale(1);
 }
 </style>
 </head>
@@ -160,18 +165,6 @@ h1{
     <p>
       Webhook Token Checker問題なく動きます。<br>
       動くか動かないかのログが表示されます。
-    </p>
-  </div>
-
-  <!-- ★ 新しく追加：Discordサーバーボタン -->
-  <div class="card discord-btn"
-    onclick="window.open(
-      'https://discord.gg/di-zheng-huang-rashigong-he-guo-1403496250715803790',
-      '_blank'
-    )">
-    <h2>Discord Server に参加</h2>
-    <p>
-      公式Discordに参加して最新情報を確認できます
     </p>
   </div>
 
