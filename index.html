@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>ツール</title>
+<title>荒らし共和国 荒らし高専</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -17,7 +17,6 @@ body{
   overflow-y:auto;
 }
 
-/* ===== タイトル ===== */
 h1{
   text-align:center;
   padding:20px 0 12px;
@@ -37,7 +36,6 @@ h1{
   to{ opacity:1; transform:translateY(0) }
 }
 
-/* ===== 区切り線 ===== */
 .divider{
   width:70%;
   height:2px;
@@ -60,7 +58,6 @@ h1{
   padding:20px;
 }
 
-/* ===== 共通カード ===== */
 .card{
   width:100%;
   height:260px;
@@ -85,7 +82,6 @@ h1{
     box-shadow .35s ease;
 }
 
-/* 出現順 */
 .card:nth-of-type(1){ animation-delay:.6s }
 .card:nth-of-type(2){ animation-delay:.85s }
 .card:nth-of-type(3){ animation-delay:1.1s }
@@ -119,7 +115,6 @@ h1{
   line-height:1.8;
 }
 
-/* ===== Discord専用カード ===== */
 .discord-btn{
   height:200px;
   text-align:center;
@@ -154,24 +149,6 @@ h1{
   font-size:15px;
 }
 
-/* ===== Discord下メッセージ ===== */
-.discord-message{
-  margin-top:12px;
-  text-align:center;
-
-  font-size:10px;          
-  color:rgba(255,255,255,.35);
-  letter-spacing:1.5px;
-
-  opacity:0;
-  animation:msgFade .8s ease forwards;
-  animation-delay:1.5s;
-}
-
-@keyframes msgFade{
-  to{ opacity:1 }
-}
-
 .viewer{
   width:100%;
   height:80vh;
@@ -195,7 +172,7 @@ h1{
 
 <body>
 
-<h1>ツール</h1>
+<h1>荒らし共和国 荒らし高専</h1>
 <div class="divider"></div>
 
 <div class="wrapper">
@@ -208,15 +185,6 @@ h1{
       自動で何回も送信されます。
     </p>
   </div>
-  
-<div class="card"
-onclick="openTool('https://nullntr.github.io/Token-Checker/')">
-  <h2>Discord Token Checker</h2>
-  <p>
-    Discord Token Checker問題なく動きます。<br>
-    有効か無効のログが表示されます。
-  </p>
-</div>
 
   <div class="card"
     onclick="openTool('https://nullntr.github.io/Webhook-token-Checker/')">
@@ -233,14 +201,7 @@ onclick="openTool('https://nullntr.github.io/Token-Checker/')">
       '_blank'
     )">
     <h2>Discord Server に参加</h2>
-    <p>公式Discordに参加して、荒らしをしよう</p>
-  </div>
-  
-  <div class="discord-message">
-    <p>
-      |荒らし共和国| |荒らし高専|<br>
-      
-    </p>
+    <p>公式Discordに参加して最新情報を確認できます</p>
   </div>
 
   <iframe id="viewer" class="viewer"></iframe>
